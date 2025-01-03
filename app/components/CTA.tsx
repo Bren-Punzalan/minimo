@@ -10,7 +10,7 @@ export default function CTA() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `http://localhost:3000/auth/callback`,
+          redirectTo: `https://minimo-pi.vercel.app/auth/callback`,
         },
       });
       if (error) throw error;
