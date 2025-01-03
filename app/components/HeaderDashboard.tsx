@@ -157,7 +157,7 @@ const HeaderDashboard = () => {
         <div
           className={`${
             isMenuOpen ? "block" : "hidden"
-          } sm:hidden absolute top-16 left-0 right-0  shadow-md p-4`}
+          } sm:hidden bg-slate-900 absolute top-16 left-0 right-0  shadow-md p-4`}
         >
           {loading ? (
             <div className="w-24 h-8  animate-pulse rounded-md" />
@@ -168,7 +168,7 @@ const HeaderDashboard = () => {
               </span>
               <button
                 onClick={handleSignOut}
-                className=" text-gray-800 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-300"
+                className=" text-gray-800 dark:text-white bg-slate-900 px-4 py-2 rounded-md text-sm font-medium hover:bg-slate-800"
               >
                 Sign Out
               </button>
