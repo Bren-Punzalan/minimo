@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronUp, ChevronDown } from "lucide-react";
@@ -48,18 +48,23 @@ export default function PomodoroTimer() {
   const [isWorkTime, setIsWorkTime] = useState(true);
   const [customWork, setCustomWork] = useState(25);
   const [customBreak, setCustomBreak] = useState(5);
-  const [audio, setAudio] = useState<HTMLAudioElement>(new Audio(TIMER_SOUND));
   const [showBreakDialog, setShowBreakDialog] = useState(false);
   const [showTimeControls, setShowTimeControls] = useState(false);
 
+  // Use useRef for audio instead of useState
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Initialize audio only on client side
   useEffect(() => {
-    setAudio(new Audio(TIMER_SOUND));
+    if (typeof window !== "undefined") {
+      audioRef.current = new Audio(TIMER_SOUND);
+    }
   }, []);
 
   const playSound = () => {
-    if (audio) {
-      audio.currentTime = 0;
-      audio.play().catch(console.error);
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play().catch(console.error);
     }
   };
 
@@ -88,6 +93,7 @@ export default function PomodoroTimer() {
     };
   }, [isActive, time, isWorkTime, selectedMode]);
 
+  // Rest of the component remains the same...
   const handleTimeAdjust = (amount: number, unit: "minutes" | "seconds") => {
     if (isActive) return;
     const multiplier = unit === "minutes" ? 60 : 1;
