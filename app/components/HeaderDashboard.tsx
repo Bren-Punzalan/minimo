@@ -99,7 +99,7 @@ const HeaderDashboard = () => {
           {/* Hamburger icon */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-gray-800 focus:outline-none"
+            className=" focus:outline-none"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -157,10 +157,10 @@ const HeaderDashboard = () => {
         <div
           className={`${
             isMenuOpen ? "block" : "hidden"
-          } sm:hidden absolute top-16 left-0 right-0 bg-white shadow-md p-4`}
+          } sm:hidden absolute top-16 left-0 right-0  shadow-md p-4`}
         >
           {loading ? (
-            <div className="w-24 h-8 bg-gray-200 animate-pulse rounded-md" />
+            <div className="w-24 h-8  animate-pulse rounded-md" />
           ) : user ? (
             <div className="flex flex-col space-y-4">
               <span className={`text-gray-600 dark:text-white`}>
@@ -168,7 +168,7 @@ const HeaderDashboard = () => {
               </span>
               <button
                 onClick={handleSignOut}
-                className="bg-gray-200 text-gray-800 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-300"
+                className=" text-gray-800 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-300"
               >
                 Sign Out
               </button>
@@ -176,18 +176,6 @@ const HeaderDashboard = () => {
           ) : (
             <span className="text-gray-600">Not signed in</span>
           )}
-
-          {/* Dark/Light Mode Toggle Button (Mobile) */}
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700"
-          >
-            {isDarkMode ? (
-              <Sun className="text-yellow-400" />
-            ) : (
-              <Moon className="text-blue-400" />
-            )}
-          </button>
         </div>
       </nav>
     </header>
