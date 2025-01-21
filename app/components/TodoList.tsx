@@ -265,7 +265,7 @@ export default function TodoList() {
 
   const { toast } = useToast();
 
-  const MAX_TODOS = 50;
+  const MAX_TODOS = 100000000;
   const [isAddingTodo, setIsAddingTodo] = useState(false);
   const [lastAddedText, setLastAddedText] = useState("");
 
